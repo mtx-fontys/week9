@@ -12,8 +12,9 @@ route add -net 10.99.0.0/16  gw 192.168.99.253
 #to access the nodes in 172.16.99.0/24  we need a route via the gateway node RouterBC
 route add -net 172.16.99.0/24  gw 192.168.99.254
 
-echo " The elegant solution for accessing the WAN involves NAT(Network Address Translation) and needs just one command"
-echo "prepare NAT for trafic going to wan(eth1)::"
+
+#The elegant solution for accessing the WAN involves NAT(Network Address Translation) and needs just one command, and doesn't involve touching external routers
+echo "prepare NAT for trafic going to WAN(eth1)::"
 iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 
-echo "However you can still make it work without NAT, by configuring the routing tables of the host machine(see the file 'setup-external')"
+#However you can still make it work without NAT, by configuring the routing tables of the host machine(see the file 'setup-external')
