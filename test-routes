@@ -1,4 +1,5 @@
 #!/bin/bash
+#You can use this script from any of the virtual machines by typing the command /hostlab/./test-routes
 echo "Check the path to PC1A, PC2A, and eth0 of RouterAC"
 traceroute 10.99.0.1
 traceroute 10.99.0.2
