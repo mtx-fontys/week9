@@ -4,3 +4,8 @@
 sudo route add -net 172.16.99.0/24 		gw 192.168.200.1
 sudo route add -net 192.168.99.0/24	gw 192.168.200.1
 sudo route add -net 10.99.0.0/16 		gw 192.168.200.1
+
+#notice that this method will work, however it is a sort of a "hack"
+#it is analogue to a real world scenario, where you get access to your ISP's routers and configure them to route traffic to your LAN (where in the real world we know that most probably millions of people use the same LAN address like you)
+#yet, this is a solution that for week-9 works just fine given that we only know how to use "route"
+#a far better solution, actually involves NAT (see the Gateway.startup)
