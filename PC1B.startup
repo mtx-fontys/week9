@@ -1,0 +1,11 @@
+ifconfig eth0 up
+/etc/init.d/networking start
+
+#configure eth0 IP address and subnet mask
+ifconfig eth0  172.16.99.1/24
+
+#we expect the above command to also add a direct route for all the nodes in 172.16.99.0/24
+
+#so now we only need to specify how we can access the other networks
+#since all the rest of the networks are accessible through routerBC we need one more rule:
+route add default gw 172.16.99.254 dev eth0 

@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "Check the path to PC1A, PC2A, and eth0 of RouterAC"
+traceroute 10.99.0.1
+traceroute 10.99.0.2
+traceroute 10.99.0.254
+
+echo ""
+echo "Check the path to PC1B, PC2B, and eth0 of RouterBC"
+traceroute 172.16.99.1
+traceroute 172.16.99.1
+traceroute 172.16.99.254
+
+echo ""
+echo "Check the path to  PC1C, PC2C, eth0 of Gateway, eth1 of RouterAC and eth1 of RouterBC"
+traceroute 192.168.99.1
+traceroute 192.168.99.2
+traceroute 192.168.99.252
+traceroute 192.168.99.253
+traceroute 192.168.99.254
+
+echo ""
+echo "Let's check the path to the external world"
+# we use the flags -w 1 and -m 5, so that we don't wait for traceroute for ever (we limit 1 sec per hop and maximum 5 hops because it could be that outside our world things don't go smoothly)
+ traceroute -w 1 -m 5  8.8.8.8
+
+echo "Finally let's also ping three times 8.8.8.8 to verify that we have access to the external world"
+ping -c 3 8.8.8.8
+

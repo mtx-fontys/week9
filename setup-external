@@ -1,0 +1,6 @@
+#!/bin/bash
+#let's make sure that the packets coming from the external world can reach the networks in the netkit lab
+#for each of lan_a,lan_b, and lan_c we know that we can access them via the Gateway's internal ethernet interface (192.168.200.1)
+sudo route add -net 172.16.99.0/24 		gw 192.168.200.1
+sudo route add -net 192.168.99.0/24	gw 192.168.200.1
+sudo route add -net 10.99.0.0/16 		gw 192.168.200.1

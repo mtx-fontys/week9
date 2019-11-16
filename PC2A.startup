@@ -1,0 +1,11 @@
+ifconfig eth0 up
+/etc/init.d/networking start
+
+#configure eth0 IP address and subnet mask
+ifconfig eth0 10.99.0.2/16
+
+#we expect the above command to also add a direct route for all the nodes in 10.99.0.0/16
+
+#so now we only need to specify how we can access the other networks
+#since all the rest of the networks are accessible through routerAC we need one more rule:
+route add default gw 10.99.0.254 dev eth0 

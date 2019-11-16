@@ -1,0 +1,15 @@
+/etc/init.d/networking start
+
+#configure eth0 IP address and subnet mask(from lab.conf we see that eth0 is connected to the same collision domain as PC1B and PC2B, aka LAN_B)
+ifconfig eth0  172.16.99.254/24
+
+#configure eth1 IP address and subnet mask(from lab.conf we see that eth1 is connected to the same collision domain as PC1C and PC2C and eth0 of Gateway, LAN_C)
+ifconfig eth1 192.168.99.254/24
+
+#we expect the above commands to also add a direct route for all the nodes in 172.16.99.0/24 and  another direct route for all the nodes in 192.168.99.0/24
+
+#to access the nodes in 10.99.0.0/16  we need a route via the gateway node RouterAC
+route add -net 10.99.0.0/16  gw 192.168.99.253
+
+#for all the rest of internet we will use a default route through the "Gateway"
+route add default gw 192.168.99.252 
