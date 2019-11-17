@@ -1,16 +1,16 @@
 /etc/init.d/networking start
 
 #configure eth0 IP address and subnet mask(from lab.conf we see that eth0 is connected to the same collision domain as PC1C and PC2C and eth1 of RouterAC and eth1 of RouterBC)
-ifconfig eth0 192.168.99.252/24
+ifconfig eth0 192.168.99.254/24
 
 # eth1 IP address and subnet mask are configured automatically by netkit (this is the way this node talks to the outside world)
 
 
 #to access the nodes in 10.99.0.0/16  we need a route via the gateway node RouterAC
-route add -net 10.99.0.0/16  gw 192.168.99.253
+route add -net 10.99.0.0/16  gw 192.168.99.3
 
 #to access the nodes in 172.16.99.0/24  we need a route via the gateway node RouterBC
-route add -net 172.16.99.0/24  gw 192.168.99.254
+route add -net 172.16.99.0/24  gw 192.168.99.4
 
 
 #The elegant solution for accessing the WAN involves NAT(Network Address Translation) and needs just one command, and doesn't involve touching external routers
