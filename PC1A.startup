@@ -6,11 +6,11 @@
 # [    10.99.0.1/16 eth0]---|
 #                           |
 #                           |               PC2A 
-#                           |------[eth0 10.99.0.2/16]
+#                           |------[10.99.0.2/16]
 #                           |
 #                           |
-#                           |                        RouterAC    		  everything else
-#                           |-----[eth0 10.99.0.254/16          ]-------(0.0.0.0/0 - default)
+#                           |                RouterAC    		         everything else
+#                           |--------[10.99.0.254/16          ]-------(0.0.0.0/0 - default)
 #                           |
 #From this we can easy tell that PC1A needs:
 #	1. A direct route for the network 10.99.0.0/16, 
