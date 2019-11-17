@@ -1,0 +1,40 @@
+
+A simplified network diagram
+
+                         lan a                                                  lan c                                                 lan b
+        PC1A               |                                                      |                                                     |            PC1B
+ [    10.99.0.1/16 eth0]---|                                    PC1C              |            PC2C                                     |---[eth0 172.16.99.1/24]
+                           |                           [192.168.99.1/24 eth0]-----|-----[eth0 192.168.99.2/24]                          |
+                           |                                                      |                                                     |
+                           |                                                      |                                                     |
+                           |                        RouterAC                      |                         RouterBC                    |
+                           |-----[eth0-10.99.0.254/16   192.168.99.3/24-eth1]-----|----[eth1-192.168.99.4/24   172.16.99.254/24-eth0]---|
+                           |                                                      |                                                     |
+        PC2A               |                                                      |                                                     |            PC2B
+ [    10.99.0.2/16 eth0]---|                                                      |                                                     |---[eth0 172.16.99.2/24] 
+                                                                                  |                                                     |
+                                                                                  |
+                                                                                  |                        Gateway                          Host computer
+                                                                                  |---[eth0 192.168.99.253/24   192.168.200.1 eth1]-----[tap interface    ]----internet
+                                                                                  |
+
+
+PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files
+PC2A,PC2B,PC2C,and RouterBC are configured using the etc/network/interfaces
+
+All then nodes are configured so that all the extenal IP addresses(hence 8.8.8.8) are accessible
+However, the fact that we have routing rules for all destinations, does not mean that we are done
+For that, we need to guarantee that incoming traffic will also be routed properly
+When we ping 8.8.8.8 from the "Gateway" virtual machine, the packets go and return successfully.
+However we try from any other virtual machine, we notice that the packets stop at the host (we can use tcpdump on the host computer to verify)
+Therefore, we need to make sure that the host computer also has the necessary routing rules so that the packets reach our network
+This can be done with two approaches:
+	We can use on the host computer the command "sudo route add -net" for each of our networks (e.g. 10.99.0.0/16, 192.168.99.0/24, and 172.16.99.0/24) and use as gateway our "Gateway"'s IP address 192.168.200.1
+	This is what is implemented in the file "setup-external". Just run from your host computer terminal after the network starts "./setup-external", and you are good to go.
+	This method is a method that needs only "route" and no extra knowledge, so this is what I was expecting you to do.
+	However, this is kind of a "hack", as it implies in a real world scenario that we have access to the routers outside our adminstrative domain (e.g. to our ISP's infrastructure).
+	In real world, this is not the case. In real world (for example the routers you have at home) we use NAT (network address translation). 
+	We will talk more about NAT it in the advanced phase. Anyways this is implemented by the second approach in "Gateway.startup".
+
+I have also made a script to test the connectivity. You can run this script in any of the virtual machines by running the command "/hostlab/./test-routes"
+

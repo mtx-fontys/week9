@@ -1,0 +1,18 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+# configuration of eth0 interface 
+auto eth0
+iface eth0 inet static
+	address  192.168.99.2
+	
+	#configure the netmask (this will result in adding a direct route to all the nodes in 192.168.99.0/24)
+	netmask 255.255.255.0
+	
+	#configure 192.168.99.254 (i.e. the node "Gateway") as our default gateway(this will result in adding a default route as if we execute "route add default gw 192.168.99.254") 
+	gateway 192.168.99.254
+
+	#but! it is not enough... we need two separate routes, one for the network 10.99.0.0/16 and one for the network 172.16.99.0/24
+	up	route add -net 10.99.0.0/16 gw 192.168.99.3
+	up	route add -net 172.16.99.0/24 gw 192.168.99.4
+

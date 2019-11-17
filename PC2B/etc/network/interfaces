@@ -1,0 +1,13 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+# configuration of eth0 interface 
+auto eth0
+iface eth0 inet static
+	address  172.16.99.2
+
+	#configure the netmask (this will result in adding a direct route to all the nodes in 172.16.99.0/24)
+	netmask 255.255.255.0
+
+	#configure 172.16.99.254 (i.e. RouterBC) as our default gateway (this will result in adding a default route as if we execute "route add default gw 172.16.99.254") 
+	gateway 172.16.99.254
