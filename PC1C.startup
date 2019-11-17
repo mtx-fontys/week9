@@ -15,3 +15,13 @@ route add -net 172.16.99.0/24 gw 192.168.99.4 dev eth0
 
 #to access all the rest of internet we need a default route through the node "Gateway"
 route add default gw 192.168.99.254
+
+
+#Let's print the interface configuration and our routing table
+echo ""
+echo "Configuration of eth0"
+ifconfig eth0
+
+echo ""
+echo "Routing tables"
+route

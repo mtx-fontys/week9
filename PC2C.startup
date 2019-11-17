@@ -1,17 +1,14 @@
 ifconfig eth0 up
 /etc/init.d/networking start
 
-#configure eth0 IP address and subnet mask
-ifconfig eth0  192.168.99.2/24
+#all the configuration is done in the file etc/network/interfaces
 
-#we expect the above command to also add a direct route for all the nodes in 192.168.99.0/24
+#Let's print the interface configuration and our routing table
+echo ""
+echo "Configuration of eth0"
+ifconfig eth0
 
-#so now we only need to specify how we can access the other networks
-#to access the nodes in 10.99.0.0/16 we need as gateway the node "routerAC"
-route add -net 10.99.0.0/16 gw 192.168.99.3 dev eth0 
+echo ""
+echo "Routing tables"
+route
 
-#to access the nodes in 172.16.99.0/24  we need as gateway the node "routerBC"
-route add -net 172.16.99.0/24 gw 192.168.99.4 dev eth0 
-
-#to access all the rest of internet we need a default route through the node "Gateway"
-route add default gw 192.168.99.254

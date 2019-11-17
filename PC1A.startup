@@ -9,3 +9,12 @@ ifconfig eth0 10.99.0.1/16
 #so now we only need to specify how we can access the other networks
 #since all the rest of the networks are accessible through routerAC we need one more rule:
 route add default gw 10.99.0.254 dev eth0 
+
+#Let's print the interface configuration and our routing table
+echo ""
+echo "Configuration of eth0"
+ifconfig eth0
+
+echo ""
+echo "Routing tables"
+route

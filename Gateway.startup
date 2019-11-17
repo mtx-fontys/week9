@@ -18,3 +18,17 @@ echo "prepare NAT for trafic going to WAN(eth1)::"
 iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 
 #However you can still make it work without NAT, by configuring the routing tables of the host machine(see the file 'setup-external')
+
+
+#Let's print the interface configuration and our routing table
+echo ""
+echo "Configuration of eth0"
+ifconfig eth0
+
+echo ""
+echo "Configuration of eth1"
+ifconfig eth1
+
+echo ""
+echo "Routing tables"
+route

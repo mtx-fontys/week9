@@ -1,29 +1,48 @@
 #!/bin/bash
 #You can use this script from any of the virtual machines by typing the command /hostlab/./test-routes
 echo "Check the path to PC1A, PC2A, and eth0 of RouterAC"
+ping -c 3 10.99.0.1	| tail -n 3 | head -n 2
 traceroute 10.99.0.1
+echo ""
+ping -c 3 10.99.0.2	| tail -n 3 | head -n 2
 traceroute 10.99.0.2
+echo ""
+ping -c 3 10.99.0.254	| tail -n 3 | head -n 2
 traceroute 10.99.0.254
-
+echo ""
 echo ""
 echo "Check the path to PC1B, PC2B, and eth0 of RouterBC"
+ping -c 3 172.16.99.1	| tail -n 3 | head -n 2
 traceroute 172.16.99.1
-traceroute 172.16.99.1
-traceroute 172.16.99.254
-
 echo ""
-echo "Check the path to  PC1C, PC2C, eth0 of Gateway, eth1 of RouterAC and eth1 of RouterBC"
+ping -c 3 172.16.99.2	| tail -n 3 | head -n 2
+traceroute 172.16.99.2
+echo ""
+ping -c 3 172.16.99.254	| tail -n 3 | head -n 2
+traceroute 172.16.99.254
+echo ""
+echo ""
+echo "Check the path to  PC1C, PC2C, eth1 of RouterAC, eth1 of RouterBC and eth0 of Gateway"
+ping -c 3 192.168.99.1	| tail -n 3 | head -n 2
 traceroute 192.168.99.1
+echo ""
+ping -c 3 192.168.99.2	| tail -n 3 | head -n 2
 traceroute 192.168.99.2
-traceroute 192.168.99.252
-traceroute 192.168.99.253
+echo ""
+ping -c 3 192.168.99.3	| tail -n 3 | head -n 2
+traceroute 192.168.99.3
+echo ""
+ping -c 3 192.168.99.4	| tail -n 3 | head -n 2
+traceroute 192.168.99.4
+echo ""
+ping -c 3 192.168.99.254| tail -n 3 | head -n 2
 traceroute 192.168.99.254
-
+echo ""
 echo ""
 echo "Let's check the path to the external world"
-# we use the flags -w 1 and -m 5, so that we don't wait for traceroute for ever (we limit 1 sec per hop and maximum 5 hops because it could be that outside our world things don't go smoothly)
- traceroute -w 1 -m 5  8.8.8.8
-
+# we use the flags -w 1 and -m 5, so that we don't wait traceroute for ever (we limit 1 sec per hop and maximum 5 hops because it could be that outside our world things don't go smoothly)
+traceroute -w 1 -m 5  8.8.8.8
+echo ""
 echo "Finally let's also ping three times 8.8.8.8 to verify that we have access to the external world"
 ping -c 3 8.8.8.8
 
