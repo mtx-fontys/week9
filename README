@@ -45,10 +45,15 @@ A simplified network diagram
                                                                                   |
                                                                                   |
    
+In PC1A.startup, PC1C.startup, and RouterAC.startup, I have included a network diagram from their respective perspective.
+I hope this helps to better understand how the rules are added. 
+
 
 I configured some nodes using ".startup" files, and some using "etc/network/interfaces", so that you can compare the two alternative ways.  
 PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files. For the purpose of our course this is ok.
 PC2A,PC2B,PC2C,and RouterBC are configured using the etc/network/interfaces. In a real scenario this would be the prefered approach.
+
+
 
 All then nodes are configured so that all the extenal IP addresses(hence 8.8.8.8) are accessible
 However, the fact that we have routing rules for all destinations, does not mean that we are done
@@ -65,4 +70,6 @@ This can be done with two approaches:
 	We will talk more about NAT it in the advanced phase. Anyways this is implemented by the second approach in "Gateway.startup"(my default choice, so you can disable it to try the 1st approach).
 
 I have also made a script to test the connectivity. You can run this script in any of the virtual machines by running the command "/hostlab/./test-routes"
+
+
 
