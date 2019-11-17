@@ -1,3 +1,31 @@
+#From the perspective of RouterAC the network looks like this
+#
+#                         LAN_A                                                  LAN_C
+#                       |                                                      |
+#                       |                        RouterAC                      |
+#                       |-----[eth0 10.99.0.254/16   192.168.99.3/24-eth1]-----|
+#                       |                                                      |               PC1C 
+#                       |                                                      |-------[192.168.99.1/24]                         
+#        PC1A           |                                                      |
+# [    10.99.0.1/16 ]---|                                                      |
+#                       |                                                      |               PC2C 
+#                       |                                                      |-------[192.168.99.2/24]
+#        PC2A           |                                                      |                                                                                  |
+# [    10.99.0.2/16 ]---|                                                      |
+#                       |                                                      |                   RouterBC                  LAN_B  
+#                       |                                                      |-------[192.168.99.4/24         ]------(172.16.99.0/24)
+#                                                                              |
+#                                                                              |
+#                                                                              |                   Gateway               everything else
+#                                                                              |-------[192.168.99.254/24       ]-----(0.0.0.0/0 - default)
+#                                                                              |
+#                                                                             
+#Therefore we can tell that RouterAC needs:
+#	1. A direct route for the network 10.99.0.0/16 on eth0
+#	2. A network route via the node RouterBC for the network 172.16.99.0/24 
+#	3. A default route via the node Gateway for all the rest
+#
+
 /etc/init.d/networking start
 
 #configure eth0 IP address and subnet mask(from lab.conf we see that eth0 is connected to the same collision domain as PC1A and PC2A, aka LAN_A)
