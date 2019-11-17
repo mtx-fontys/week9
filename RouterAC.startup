@@ -9,7 +9,7 @@ ifconfig eth1 192.168.99.3/24
 #we expect the above commands to also add a direct route for all the nodes in 10.99.0.0/16 and  another direct route for all the nodes in 192.168.99.0/24
 
 #to access the nodes in 172.16.99.0/24 we need a route via the gateway node RouterBC
-route add -net 172.16.99.0/24 gw 192.168.99.254
+route add -net 172.16.99.0/24 gw 192.168.99.4
 
 #for all the rest of internet we will use a default route through the "Gateway"
-route add default gw 192.168.99.252 
+route add default gw 192.168.99.254 
