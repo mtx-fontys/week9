@@ -1,3 +1,22 @@
+#
+#From the perspective of PC1A the network looks like this
+#                         LAN_A
+#                           |
+#        PC1A               |
+# [    10.99.0.1/16 eth0]---|
+#                           |
+#                           |               PC2A 
+#                           |------[eth0 10.99.0.2/16]
+#                           |
+#                           |
+#                           |                        RouterAC    		  everything else
+#                           |-----[eth0 10.99.0.254/16          ]-------(0.0.0.0/0 - default)
+#                           |
+#From this we can easy tell that PC1A needs:
+#	1. A direct route for the network 10.99.0.0/16, 
+#	2. A default route via the node "RouterAC" for all the rest
+
+
 ifconfig eth0 up
 /etc/init.d/networking start
 
