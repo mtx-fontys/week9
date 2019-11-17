@@ -22,8 +22,9 @@
 #                                                                             
 #Therefore we can tell that RouterAC needs:
 #	1. A direct route for the network 10.99.0.0/16 on eth0
-#	2. A network route via the node RouterBC for the network 172.16.99.0/24 
-#	3. A default route via the node Gateway for all the rest (relevant to Task 2)
+#	2. A direct route for the network 192.168.99.0/24 on eth1
+#	3. A network route via the node RouterBC for the network 172.16.99.0/24 
+#	4. A default route via the node Gateway for all the rest (relevant to Task 2)
 #
 
 /etc/init.d/networking start
