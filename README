@@ -46,9 +46,9 @@ A simplified network diagram
                                                                                   |
    
 
-
-PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files
-PC2A,PC2B,PC2C,and RouterBC are configured using the etc/network/interfaces
+I configured some nodes using ".startup" files, and some using "etc/network/interfaces", so that you can compare the two alternative ways.  
+PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files. For the purpose of our course this is ok.
+PC2A,PC2B,PC2C,and RouterBC are configured using the etc/network/interfaces. In a real scenario this would be the prefered approach.
 
 All then nodes are configured so that all the extenal IP addresses(hence 8.8.8.8) are accessible
 However, the fact that we have routing rules for all destinations, does not mean that we are done
