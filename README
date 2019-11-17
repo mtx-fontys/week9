@@ -55,7 +55,7 @@ However, the fact that we have routing rules for all destinations, does not mean
 For that, we need to guarantee that incoming traffic will also be routed properly
 When we ping 8.8.8.8 from the "Gateway" virtual machine, the packets go and return successfully.
 However if we try from any other virtual machine, we can notice that the packets stop at the host (we can use tcpdump on the host computer to verify)
-Therefore, we need to make sure that the host computer also has the necessary routing rules so that the packets to reach our network
+Therefore, we need to make sure that the host computer also has the necessary routing rules so that the returning packets can reach our network
 This can be done with two approaches:
 	We can use on the host computer the command "sudo route add -net" for each of our networks (e.g. 10.99.0.0/16, 192.168.99.0/24, and 172.16.99.0/24) and use as gateway our "Gateway"'s IP address 192.168.200.1
 	This is what is implemented in the file "setup-external". Just run from your host computer terminal after the network starts "./setup-external", and you are good to go.
