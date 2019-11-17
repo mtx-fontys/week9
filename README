@@ -1,9 +1,8 @@
-
 A simplified network diagram
 
                          lan a                                                  lan c
+                           |                                                      |                         
         PC1A               |                                                      |
-                           |                                                      |
  [    10.99.0.1/16 eth0]---|                                                      |
                            |                                                      |
                            |                                                      |
@@ -12,7 +11,7 @@ A simplified network diagram
                            |                                                      |
         PC2A               |                                                      |
  [    10.99.0.2/16 eth0]---|                                                      |
-                                                                                  |
+                           |                                                      |
                                                                                   |
                                                                                   |
                                                                                   |
