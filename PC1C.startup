@@ -19,7 +19,7 @@
 #                                |                   Gateway               everything else
 #                                |-------[192.168.99.254/24       ]-----(0.0.0.0/0 - default)
 #                                |
-#PC1C needs
+#Therefore we can tell that PC1C needs
 #	1. A direct route for the network 192.168.99.0/24
 #	2. A network route via the node "RouterAC" for the network 10.99.0.254/16
 #	3. A network route via the node "RouterAC" for the network 172.16.99.0/24
