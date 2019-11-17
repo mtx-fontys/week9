@@ -1,22 +1,51 @@
 
 A simplified network diagram
 
-                         lan a                                                  lan c                                                 lan b
-        PC1A               |                                                      |                                                     |            PC1B
- [    10.99.0.1/16 eth0]---|                                    PC1C              |            PC2C                                     |---[eth0 172.16.99.1/24]
-                           |                           [192.168.99.1/24 eth0]-----|-----[eth0 192.168.99.2/24]                          |
-                           |                                                      |                                                     |
-                           |                                                      |                                                     |
-                           |                        RouterAC                      |                         RouterBC                    |
-                           |-----[eth0-10.99.0.254/16   192.168.99.3/24-eth1]-----|----[eth1-192.168.99.4/24   172.16.99.254/24-eth0]---|
-                           |                                                      |                                                     |
-        PC2A               |                                                      |                                                     |            PC2B
- [    10.99.0.2/16 eth0]---|                                                      |                                                     |---[eth0 172.16.99.2/24] 
-                                                                                  |                                                     |
+                         lan a                                                  lan c
+        PC1A               |                                                      |
+                           |                                                      |
+ [    10.99.0.1/16 eth0]---|                                                      |
+                           |                                                      |
+                           |                                                      |
+                           |                        RouterAC                      |
+                           |-----[eth0 10.99.0.254/16   192.168.99.3/24-eth1]-----|
+                           |                                                      |
+        PC2A               |                                                      |
+ [    10.99.0.2/16 eth0]---|                                                      |
                                                                                   |
-                                                                                  |                        Gateway                          Host computer
-                                                                                  |---[eth0 192.168.99.253/24   192.168.200.1 eth1]-----[tap interface    ]----internet
                                                                                   |
+                                                                                  |
+                                                                                  |
+                                                                                  |
+                                                                                  |
+                         lan b                                                    |
+              PC1B         |                                                      |
+  [ 172.16.99.1/24 eth0]---|                                                      |
+                           |                                                      |
+                           |                                                      |
+                           |                        RouterBC                      |
+                           |----[eth0 172.16.99.254/24  192.168.99.4/24 eth1]-----|
+                           |                                                      |
+                           |                                                      |
+              PC2B         |                                                      |
+  [ 172.16.99.2/24 eth0]---|                                                      |
+                           |                                                      |
+                                                                                  |
+                                                                                  |
+                                                                 PC1C             |
+                                                       [192.168.99.1/24 eth0]-----|
+                                                                                  |
+                                                                                  |
+                                                                PC2C              |
+                                                       [192.168.99.2/24 eth0]-----|
+                                                                                  |
+                                                                                  |
+                                                                                  |
+                Host computer                                     Gateway         |
+   internet---[tap interface]----[eth1 192.168.200.1   192.168.99.254/24 eth0]----|
+                                                                                  |
+                                                                                  |
+   
 
 
 PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files
