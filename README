@@ -53,7 +53,10 @@ I configured some nodes using ".startup" files, and some using "etc/network/inte
 PC1A,PC1B,PC1C,RouterAC, and Gateway are configured using the .startup files. For the purpose of our course this is ok.
 PC2A,PC2B,PC2C,and RouterBC are configured using the etc/network/interfaces. In a real scenario this would be the prefered approach.
 
+I have also made a script to test the connectivity. You can run this script in any of the virtual machines by running the command "/hostlab/./test-routes"
 
+
+=================For those interested in Task 2, and connectivity to the internet=============
 
 All then nodes are configured so that all the extenal IP addresses(hence 8.8.8.8) are accessible
 However, the fact that we have routing rules for all destinations, does not mean that we are done
@@ -69,7 +72,7 @@ This can be done with two approaches:
 	In real world, this is not the case. In real world (for example the routers you have at home) we use NAT (network address translation). 
 	We will talk more about NAT it in the advanced phase. Anyways this is implemented by the second approach in "Gateway.startup"(my default choice, so you can disable it to try the 1st approach).
 
-I have also made a script to test the connectivity. You can run this script in any of the virtual machines by running the command "/hostlab/./test-routes"
+
 
 
 
